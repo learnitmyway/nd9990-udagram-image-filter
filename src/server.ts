@@ -1,7 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import { filterImageFromURL, deleteLocalFiles } from './util/util'
-
 ;(async () => {
   // Init the Express application
   const app = express()
@@ -12,7 +11,7 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util'
   // Use the body parser middleware for post requests
   app.use(bodyParser.json())
 
-  // @TODO1 IMPLEMENT A RESTFUL ENDPOINT
+  // IMPLEMENT A RESTFUL ENDPOINT
   // GET /filteredimage?image_url={{URL}}
   // endpoint to filter an image from a public url.
   // IT SHOULD
@@ -28,7 +27,24 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util'
 
   /**************************************************************************** */
 
-  //! END @TODO1
+  app.get('/filteredimage', async (req, res, next) => {
+    const imageUrl = req.query.image_url
+
+    if (!imageUrl) {
+      return res.status(400).send('Image url is missing')
+    }
+
+    try {
+      const filteredPath = await filterImageFromURL(imageUrl)
+      res.sendFile(filteredPath, () => {
+        deleteLocalFiles(Array.of(filteredPath))
+      })
+    } catch (err) {
+      next(err)
+    }
+  })
+
+  //! END
 
   // Root Endpoint
   // Displays a simple message to the user
