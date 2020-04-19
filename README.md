@@ -4,6 +4,12 @@ An image filter that is part of the [Cloud Developer Nanodegree](https://www.uda
 
 [Link to starter code](https://github.com/udacity/cloud-developer/tree/master/course-02/project/image-filter-starter-code)
 
+## Run locally
+
+- `npm install`
+- `npm run dev`
+- Go to `http://localhost:8082/filteredimage?image_url=https://res.cloudinary.com/developerdavo/image/upload/f_auto,q_70,w_1000/v1566583881/learnitmyway/jan-tinneberg-tVIv23vcuz4-unsplash_by3gwy.jpg`
+
 ## Brew Fromulae
 
 - awscli
@@ -44,16 +50,9 @@ deploy:
 
 ## Deployment
 
-- `npm install`
 - `npm run build`
 - `eb deploy`
 - Go to `http://nd9990-udagram-image-filter-dev-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://res.cloudinary.com/developerdavo/image/upload/f_auto,q_70,w_1000/v1566583881/learnitmyway/jan-tinneberg-tVIv23vcuz4-unsplash_by3gwy.jpg`
-
-## Run locally
-
-- `npm install`
-- `npm run dev`
-- Go to `http://localhost:8082/filteredimage?image_url=https://res.cloudinary.com/developerdavo/image/upload/f_auto,q_70,w_1000/v1566583881/learnitmyway/jan-tinneberg-tVIv23vcuz4-unsplash_by3gwy.jpg`
 
 ## Terminate
 
